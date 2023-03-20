@@ -11,4 +11,9 @@ public class VolumeGroup extends DriveBlueprints {
         if (physicalVolume.volumeGroup(this)) pvTable.put(physicalVolume.name, physicalVolume);
         return false;
     }
+
+    @Override
+    public String toString() {
+
+    }
 }
