@@ -1,11 +1,9 @@
 public class PhysicalVolume extends DriveBlueprints {
     private VolumeGroup volumeGroup = null;
     private PhysicalHardDrive physicalHardDrive = null;
-
     public PhysicalVolume(String name) {
         super(name);
     }
-
     public boolean physicalHardDrive(PhysicalHardDrive physicalHardDrive) {
         if (physicalHardDrive.physicalVolume(this)) return true;
         return false;
@@ -17,6 +15,8 @@ public class PhysicalVolume extends DriveBlueprints {
             return true;
         } return false;
     }
+
+    public PhysicalHardDrive physicalHardDrive() { return this.physicalHardDrive; }
 
     @Override
     public String toString() {

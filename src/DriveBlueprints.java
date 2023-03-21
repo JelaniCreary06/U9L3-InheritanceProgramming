@@ -1,10 +1,10 @@
 import java.util.UUID;
 public class DriveBlueprints {
     protected String name, uuid = UUID.randomUUID().toString();;
-    protected double size;
+    protected double size, availableSpace;
 
     public DriveBlueprints(String name, double size) {
-        this.name = name; this.size = size;
+        this.name = name; this.size = size; this.availableSpace = size;
     }
 
     public DriveBlueprints(String name) {
@@ -16,5 +16,5 @@ public class DriveBlueprints {
     public double size() { return this.size; }
 
     public void name(String name) { this.name = name; }
-    public void size(double size) { this.size += size; }
+    public void availableSpace(double toSubtract) { this.availableSpace -= toSubtract; }
 }

@@ -13,6 +13,8 @@ public class PhysicalHardDrive extends DriveBlueprints {
         return false;
     }
 
+    public PhysicalVolume physicalVolume() { return this.physicalVolume; }
+
     @Override
     public String toString() {
         return this.name + " [" + this.size + "G] [" + this.uuid + "]";
