@@ -1,4 +1,4 @@
-public class PhysicalVolume extends DriveBlueprints {
+public class PhysicalVolume extends LogicalVolume {
     private VolumeGroup volumeGroup = null;
     private PhysicalHardDrive physicalHardDrive = null;
     public PhysicalVolume(String name) {
@@ -9,7 +9,8 @@ public class PhysicalVolume extends DriveBlueprints {
         return false;
     }
 
-    public boolean volumeGroup(VolumeGroup volumeGroup) {
+
+    public boolean physicalVolumeGroup(VolumeGroup volumeGroup) {
         if (volumeGroup == null) {
             this.volumeGroup = volumeGroup;
             return true;

@@ -1,4 +1,4 @@
-public class PhysicalHardDrive extends DriveBlueprints {
+public class PhysicalHardDrive extends LogicalVolume {
     private PhysicalVolume physicalVolume = null;
 
     public PhysicalHardDrive(String name, double size) {

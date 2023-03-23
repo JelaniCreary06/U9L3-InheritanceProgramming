@@ -1,6 +1,6 @@
 import java.util.Hashtable;
 
-public class VolumeGroup extends DriveBlueprints {
+public class VolumeGroup extends LogicalVolume {
     private Hashtable<String, PhysicalVolume> pvTable = new Hashtable();
 
     public VolumeGroup(String name) {
