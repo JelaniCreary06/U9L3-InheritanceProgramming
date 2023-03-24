@@ -21,23 +21,32 @@ public class Runner {
             System.out.println("ssdfs");
 
             try {
-                Thread.sleep(3000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
 
         scanner = new Scanner(System.in);
-        String currentCmd = "";
+        String currentCmd = "", arguments[] = null;
 
         do {
             System.out.print("Run commands.\nInput \"exit-setup\" to end.\nInput \"cmdList\" to view all commands.\nInput a command:");
             currentCmd = scanner.nextLine();
             currentCmd = removeFrontSpaces(currentCmd);
+            currentCmd = replaceAllDashes(currentCmd);
+
+            if (currentCmd.contains("") || currentCmd.indexOf(" ") != currentCmd.length() - 1) {
+                arguments = currentCmd.split(" ");
+                currentCmd = arguments[0];
+            }
 
             try {
                 Method method = handler.getClass().getMethod(currentCmd);
-                if (!method.equals(null)) method.invoke(handler);
+                if (!method.equals(null)) {
+                    if (arguments.length > 1) method.invoke(handler, (String[]) arguments);
+                    else method.invoke(handler);
+                }
             } catch (NoSuchMethodException e) {
                 throw new RuntimeException(e);
             } catch (InvocationTargetException e) {
@@ -46,6 +55,7 @@ public class Runner {
                 throw new RuntimeException(e);
             }
 
+            arguments = null;
             System.out.println("\n");
         } while (!currentCmd.equals("exit-setup"));
     }
@@ -54,6 +64,11 @@ public class Runner {
         while (cmd.indexOf(" ") == 0) {
             cmd = cmd.substring(1, cmd.length());
         }
+        return cmd;
+    }
+
+    public static String replaceAllDashes(String cmd) {
+        cmd = cmd.replaceAll("-", "_");
         return cmd;
     }
 }
